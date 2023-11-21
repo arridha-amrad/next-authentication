@@ -5,7 +5,10 @@ import { useRouter } from "next/navigation";
 export default function FacebookButton() {
   const router = useRouter();
   const loginFacebook = async () => {
-    const result = await signIn("facebook");
+    const result = await signIn("facebook", {
+      callbackUrl: "http://localhost:3000",
+      redirect: true,
+    });
     if (!result?.error) {
       router.replace("/");
     }

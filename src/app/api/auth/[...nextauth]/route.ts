@@ -20,6 +20,7 @@ const handler = NextAuth({
     FacebookProvider({
       clientId: process.env.FB_CID!,
       clientSecret: process.env.FB_CSE!,
+      version: "v.18.0",
     }),
     CredentialsProvider({
       name: "credentials",
