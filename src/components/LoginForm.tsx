@@ -26,7 +26,7 @@ const LoginForm = () => {
     const result = await signIn("credentials", { ...state, redirect: false });
     if (result) {
       if (!result.error) {
-        router.replace(`/${params.get("prev")}`);
+        router.replace(`/${params.get("prev") ?? ""}`);
       } else {
         setError(result.error);
       }
@@ -45,6 +45,7 @@ const LoginForm = () => {
             Username or email
           </label>
           <input
+            id="identity"
             onChange={onChange}
             name="identity"
             value={state.identity}
@@ -53,10 +54,11 @@ const LoginForm = () => {
           />
         </div>
         <div className="w-full">
-          <label className="block" htmlFor="identity">
+          <label className="block" htmlFor="password">
             Password
           </label>
           <input
+            id="password"
             onChange={onChange}
             name="password"
             value={state.password}
